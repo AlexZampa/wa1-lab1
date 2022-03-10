@@ -16,6 +16,17 @@ function FilmLibrary(){
     // add new Film
     this.addNewFilm = film => this.films.push(film);
 
+    // sort films by date
+    this.sortByDate = () => {
+        const sortFilms = this.films.filter(f => f.date !== undefined).sort((f1, f2) => f1.date.isAfter(f2.date));
+        this.films.filter(f => f.date === undefined).forEach(f => sortFilms.push(f));
+        return sortFilms;
+    };
+
+    // delete film
+    this.deleteFile = (filmID) => {
+    };
+
 }
 
 const f1 = new Film(1, 'Pulp Fiction', true, dayjs('2022-3-10'), 5);
@@ -30,4 +41,7 @@ Filmlib.addNewFilm(f2);
 Filmlib.addNewFilm(f3);
 Filmlib.addNewFilm(f4);
 Filmlib.addNewFilm(f5);
-console.log(Filmlib);
+
+//console.log(Filmlib);
+//console.log(Filmlib.sortByDate());
+
